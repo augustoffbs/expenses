@@ -35,9 +35,7 @@ export default {
       delExp = delExp.filter(expense => expense.id !== id);
       console.log(delExp);
       localStorage.setItem("expenses", JSON.stringify(delExp));
-      return {
-        expenses: JSON.parse(localStorage.getItem("expenses"))
-      }
+      location.reload()
     },
     addExpense(newExpense) {
       var addExp = JSON.parse(localStorage.getItem("expenses"))
