@@ -1,6 +1,7 @@
 <template>
   <div id="app">
   <Header />
+  <LocalStorage />
   <AddExpense v-on:add-expense="addExpense" />
   <Expenses v-bind:expenses="expenses" v-on:del-expense="deleteExpense"/>
   </div>
@@ -10,45 +11,45 @@
 import AddExpense from './components/AddExpense';
 import Header from './components/layout/Header';
 import Expenses from './components/Expenses';
+import LocalStorage from './components/LocalStorage';
+import axios from 'axios';
 
 export default {
   name: 'app',
   components: {
+    LocalStorage,
     AddExpense,
     Header,
     Expenses
   },
   data() {
     return {
-      expenses: [
-        {
-          id: 1,
-          title: "Test one",
-          amount: "$1500",
-          completed: false
-        },
-        {
-          id: 2,
-          title: "Test two",
-          amount: "$1500",
-          completed: false
-        },
-        {
-          id: 3,
-          title: "Test three",
-          amount: "$1500",
-          completed: false
-        }
-      ]
+      expenses: JSON.parse(localStorage.getItem("expenses"))
     }
   },
   methods: {
     deleteExpense(id) {
-      this.expenses = this.expenses.filter(expense => expense.id !== id)
+      // this.expenses = this.expenses.filter(expense => expense.id !== id)
+      var delExp = JSON.parse(localStorage.getItem("expenses"));
+      console.log(delExp);
+      delExp = delExp.filter(expense => expense.id !== id);
+      console.log(delExp);
+      localStorage.setItem("expenses", JSON.stringify(delExp));
+      return {
+        expenses: JSON.parse(localStorage.getItem("expenses"))
+      }
     },
     addExpense(newExpense) {
-      this.expenses = [...this.expenses, newExpense]
+      var addExp = JSON.parse(localStorage.getItem("expenses"))
+      addExp.push(newExpense)
+      console.log(addExp)
+      localStorage.setItem("expenses", JSON.stringify(addExp));
     }
+  },
+  created() {
+    // Get the local storage data
+    //axios.get('https://my-json-server.typicode.com/augustoffbs/tracker/db')
+    //.then(res => this.expenses = res.data);
   }
 }
 </script>

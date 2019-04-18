@@ -21,11 +21,10 @@ export default {
     },
     methods: {
         addExpense(e) {
-            e.preventDefault();
             const newExpense = {
                 id: uuid.v4(),
                 title: this.title,
-                amount: "$" + this.amount,
+                amount: this.amount,
                 completed: false
             }
             this.$emit('add-expense', newExpense);
