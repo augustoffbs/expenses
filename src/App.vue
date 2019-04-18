@@ -1,17 +1,20 @@
 <template>
   <div id="app">
   <Header />
+  <AddExpense v-on:add-expense="addExpense" />
   <Expenses v-bind:expenses="expenses" v-on:del-expense="deleteExpense"/>
   </div>
 </template>
 
 <script>
+import AddExpense from './components/AddExpense';
 import Header from './components/layout/Header';
 import Expenses from './components/Expenses';
 
 export default {
   name: 'app',
   components: {
+    AddExpense,
     Header,
     Expenses
   },
@@ -42,6 +45,9 @@ export default {
   methods: {
     deleteExpense(id) {
       this.expenses = this.expenses.filter(expense => expense.id !== id)
+    },
+    addExpense(newExpense) {
+      this.expenses = [...this.expenses, newExpense]
     }
   }
 }
@@ -57,5 +63,18 @@ export default {
   body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
+  }
+
+  .btn {
+    display: inline-block;
+    border: none;
+    background: #555;
+    color: #fff;
+    padding: 7px 20px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: #666;
   }
 </style>
