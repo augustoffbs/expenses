@@ -31,17 +31,14 @@ export default {
     deleteExpense(id) {
       // this.expenses = this.expenses.filter(expense => expense.id !== id)
       var delExp = JSON.parse(localStorage.getItem("expenses"));
-      console.log(delExp);
       delExp = delExp.filter(expense => expense.id !== id);
-      console.log(delExp);
       localStorage.setItem("expenses", JSON.stringify(delExp));
       location.reload()
     },
     addExpense(newExpense) {
       var addExp = JSON.parse(localStorage.getItem("expenses"))
       addExp.push(newExpense)
-      console.log(addExp)
-      localStorage.setItem("expenses", JSON.stringify(addExp));
+      window.localStorage.setItem("expenses", JSON.stringify(addExp));
     }
   },
   created() {
