@@ -32,10 +32,8 @@ export default {
                 amount: "test"
             }
             var exp = JSON.parse(localStorage.getItem("expenses"));
-            console.log(exp);
             exp.push(newStorage);
             // localStorage.setItem("expenses", JSON.stringify(newExp));
-            console.log(localStorage.getItem("expenses"));
             localStorage.setItem("expenses", JSON.stringify(exp));
         },
         delStorage() {
@@ -43,7 +41,7 @@ export default {
         },
         testLog() {
             var values = localStorage.getItem("expenses");
-            console.log(values)
+            console.log(values);
         }
     }
 }

@@ -25,8 +25,7 @@ export default {
                 id: uuid.v4(),
                 title: this.title,
                 amount: this.amount,
-                completed: false
-            }
+            };
             this.$emit('add-expense', newExpense);
             this.title = '';
             this.amount = '';

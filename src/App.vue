@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-  <Header />
-  <LocalStorage />
-  <AddExpense v-on:add-expense="addExpense" />
-  <Expenses v-bind:expenses="expenses" v-on:del-expense="deleteExpense"/>
+    <Header />
+    <LocalStorage />
+    <AddExpense v-on:add-expense="addExpense" />
+    <Expenses v-bind:expenses="expenses" v-on:del-expense="deleteExpense"/>
   </div>
 </template>
 
@@ -12,7 +12,6 @@ import AddExpense from './components/AddExpense';
 import Header from './components/layout/Header';
 import Expenses from './components/Expenses';
 import LocalStorage from './components/LocalStorage';
-import axios from 'axios';
 
 export default {
   name: 'app',
@@ -33,19 +32,19 @@ export default {
       var delExp = JSON.parse(localStorage.getItem("expenses"));
       delExp = delExp.filter(expense => expense.id !== id);
       localStorage.setItem("expenses", JSON.stringify(delExp));
-      location.reload()
+      location.reload();
     },
     addExpense(newExpense) {
-      var addExp = JSON.parse(localStorage.getItem("expenses"))
-      addExp.push(newExpense)
+      var addExp = JSON.parse(localStorage.getItem("expenses"));
+      addExp.push(newExpense);
       window.localStorage.setItem("expenses", JSON.stringify(addExp));
     }
   },
-  created() {
+  //created() {
     // Get the local storage data
     //axios.get('https://my-json-server.typicode.com/augustoffbs/tracker/db')
     //.then(res => this.expenses = res.data);
-  }
+  //}
 }
 </script>
 
