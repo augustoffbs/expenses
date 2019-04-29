@@ -4,9 +4,6 @@
             Total:
             <span class="on-budget"> ${{ total }}</span>
         </h3>
-        <button @click="getExpenses">
-            Get Expenses
-        </button>
     </div>
 </template>
 
@@ -15,7 +12,7 @@ export default {
     name: "TotalExpenses",
     data() {
         var expenses = JSON.parse(localStorage.getItem("expenses"));
-        var newTotal;
+        var newTotal = 0;
         for(var i = 0; i < expenses.length; i++) {
             newTotal = newTotal + parseInt(expenses[i].amount);
             }

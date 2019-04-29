@@ -2,7 +2,7 @@
     <div>
         <form @submit="addExpense">
             <input type="text" v-model="title" name="title" placeholder="Add Expense...">
-            <input type="text" v-model="amount" name="amount" placeholder="$">
+            <input type="number" min="1" v-model="amount" name="amount" placeholder="$">
             <input type="submit" value="Submit" class="btn">
         </form>
     </div>
@@ -20,11 +20,11 @@ export default {
         }
     },
     methods: {
-        addExpense(e) {
+        addExpense() {
             const newExpense = {
                 id: uuid.v4(),
                 title: this.title,
-                amount: this.amount,
+                amount: parseInt(this.amount),
             };
             this.$emit('add-expense', newExpense);
             this.title = '';

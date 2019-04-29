@@ -1,7 +1,6 @@
 <template>
     <div class="expense-item" v-bind:class="{'is-complete':expense.completed}">
         <p>
-            <input type="checkbox" v-on:change="markComplete">
             {{ expense.title }} // ${{ expense.amount }}
             <button @click="$emit('del-expense', expense.id)" class="del" type="submit">x</button>
         </p>
@@ -18,9 +17,8 @@ export default {
 <style scoped>
 
 .expense-item {
-    background: #f4f4f4;
-    padding: 10px;
-    border-bottom: 1px #ccc dotted
+    padding: 8px;
+    border-bottom: 1px #ccc solid
 }
 
 .is-complete {
@@ -28,14 +26,16 @@ export default {
 }
 
 .del {
-    background: #ff0000;
+    width: 22px;
+    height: 22px;
+    float: right;
+    border-radius: 50%;
+    background: #d64b4b;
     color: #fff;
     font-weight: bold;
     border: none;
-    padding: 5px 9px;
-    border-radius: 50%;
     cursor: pointer;
-    float: right;
+    margin: 0;
 }
 
 </style>
