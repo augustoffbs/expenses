@@ -4,6 +4,7 @@
     <LocalStorage />
     <AddExpense v-on:add-expense="addExpense" />
     <Expenses v-bind:expenses="expenses" v-on:del-expense="deleteExpense"/>
+    <TotalExpenses />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import AddExpense from './components/AddExpense';
 import Header from './components/layout/Header';
 import Expenses from './components/Expenses';
 import LocalStorage from './components/LocalStorage';
+import TotalExpenses from './components/TotalExpenses';
 
 export default {
   name: 'app',
@@ -19,7 +21,8 @@ export default {
     LocalStorage,
     AddExpense,
     Header,
-    Expenses
+    Expenses,
+    TotalExpenses
   },
   data() {
     return {

@@ -16,14 +16,9 @@ export default {
     name: "LocalStorage",
     methods: {
         setup() {
-            var expenses = [
-                {
-                    id: '1',
-                    title: '2',
-                    amount: '3'
-                }
-            ]
+            var expenses = []
             localStorage.setItem("expenses", JSON.stringify(expenses))
+            localStorage.setItem("total", "0")
         },
         setStorage() {
             var newStorage = {
@@ -33,7 +28,6 @@ export default {
             }
             var exp = JSON.parse(localStorage.getItem("expenses"));
             exp.push(newStorage);
-            // localStorage.setItem("expenses", JSON.stringify(newExp));
             localStorage.setItem("expenses", JSON.stringify(exp));
         },
         delStorage() {
